@@ -1,0 +1,604 @@
+﻿PHONE VALIDATION
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Test Page</title>
+    <style>
+        .mobile-email-form {
+            font-size: 1.4rem;
+            line-height: 1.5em;
+        }
+
+        .mobile-email-input {
+            margin-top: 0.8rem;
+            width: 50%;
+        }
+
+            .mobile-email-input input {
+                width: 100%;
+                height: 3rem;
+                border: 2px solid #000;
+                border-radius: 0.4rem;
+                padding-left: 1rem;
+            }
+    </style>
+</head>
+<body>
+    <div class="mobile-email-input">
+        <input type="text" maxlength="12" id="mobile-email-form" class="mobile-email-form medium" placeholder="Enter mobile num "
+               onkeydown="return phoneformat(event,this.value)" onpaste="handlePaste(event)";>
+    </div>
+    <script>
+        function handlePaste(event) {
+            let pasteText = (event.clipboardData || window.clipboardData).getData('text');
+            var numregex = /^[6-9]$/;
+            input = pasteText.slice(-10);
+            if (!((input[0]).match(numregex)) || input.length < 10) {
+               document.getElementById("mobile-email-form").style.border = "5px solid #ff0000";
+            }
+        }
+        var map = {};
+        function phoneformat(event, input) {
+            var charCode = event.which || event.keyCode;
+            map[event.keyCode] = event.keyCode;
+            if ((map[17] && (map[86] || map[65] || map[82] || map[90] || map[88]))) {
+                map = {} ;
+                return true;
+            }
+            if (charCode == 8 || charCode == 46 || charCode == 37 || charCode == 39)
+                return true;
+            if (!(event.keyCode == 8 || event.keyCode == 37 || event.keyCode == 39)) {
+                    input = input.replace(/\D/g, '');
+                    var size = input.length;
+                    if (size == 0) {
+                        input = input;
+                    } else if (size < 3) {
+                        input = input;
+                    } else if (size < 7) {
+                        input = input.substring(0, 3) + ' ' + input.substring(3, 6);
+                    } else {
+                        input = input.substring(0, 3) + ' ' + input.substring(3, 6) + ' ' + input.substring(6, 10);
+                    }
+                document.getElementById('mobile-email-form').value = input;
+                }
+           // var caret = event.target.selectionStart;
+           // event.target.value = event.target.value.substring(0, caret) + event.target.value.substring(caret);
+            var cursorAt = event.target.selectionStart;
+            console.log(cursorAt);
+            if (cursorAt == 0) {
+                if ((charCode >= 54 && charCode <= 57) || charCode==17 ) {
+                    document.getElementById("mobile-email-form").style.border = "5px solid #cecece";
+                    return true;
+                }
+                else {
+                    document.getElementById("mobile-email-form").style.border = "5px solid #ff0000";
+                    return false;
+                }
+            }
+            if (!(charCode >= 48 && charCode <= 57) || charCode == 17) {
+                return false;
+            }
+            if (input == "")
+                input = event.key;
+            var numregex = "^[6-9]{1}[0-9]{0,9}";
+            if (input.match(numregex)) {
+                document.getElementById("mobile-email-form").style.border = "5px solid #cecece"
+                return true;
+            }
+            else {
+                document.getElementById("mobile-email-form").style.border = "5px solid #ff0000";
+                return false;
+            }
+        }         
+    </script>
+</body>
+</html>
+<!--//email validation
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Test Page</title>
+    <style>
+        .mobile-email-form {
+            font-size: 1.4rem;
+            line-height: 1.5em;
+        }
+
+        .mobile-email-input {
+            margin-top: 0.8rem;
+            width: 50%;
+        }
+
+            .mobile-email-input input {
+                width: 100%;
+                height: 3rem;
+                border: 2px solid #000;
+                border-radius: 0.4rem;
+                padding-left: 1rem;
+            }
+    </style>
+</head>
+<body>
+    <div class="mobile-email-input">
+        <input type="text"  id="mobile-email-form" class="mobile-email-form medium" placeholder="Enter E-mail"
+              onkeydown="return restrictvalues(event)" >
+        <button id="verify" onclick=" return phoneformat(event)">VERIFY</button>
+    </div>
+    <script>
+        function restrictvalues(event) {
+            var keyCode = event.which || event.keyCode;
+            var eventKey = event.key;
+            if (keyCode == 32 || eventKey == ' ') {
+                return false;
+            }
+            return true;
+        }
+        function phoneformat(event) {
+            document.getElementById('mobile-email-form').style.border = "2px solid #cecece";
+            document.getElementById('mobile-email-form').style.color = "black";
+            var emailRegex = /^([0-9a-zA-Z]([_.]*[0-9a-zA-Z]+)*)@([0-9a-zA-Z]([-_\\.]*[0-9a-zA-Z]+)*)[\\.]([a-zA-Z]{2,9})$/;
+            var input = document.getElementById('mobile-email-form').value;
+            if (input.match(emailRegex)) {
+                document.getElementById('mobile-email-form').value = input;
+                document.getElementById('mobile-email-form').style.color = "magenta";
+            }
+            else
+                document.getElementById('mobile-email-form').style.border = "2px solid #FF0000";
+
+        }
+    </script>
+</body>
+</html>
+-->
+<!--<html>
+<head>
+    <title>Assignment</title>
+    <style>
+        #container-1 {
+            height:20vh;
+            width:20vw;
+            background-color:antiquewhite;
+        }
+        #container-2 {
+            height: 20vh;
+            width: 20vw;
+            margin-left:300px;
+            background-color:aquamarine;
+        }
+        #container-3 {
+            height: 20vh;
+            width: 20vw;
+            margin-left:600px;
+            background-color:aqua;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="container-1" class= "container" onmouseover="changeHash(this)">
+        </div>
+        <div id="container-2"  class= "container" onmouseover="changeHash(this)">
+        </div>
+        <div id="container-3"  class= "container"onmouseover="changeHash(this)">
+        </div>
+    </div>
+
+    <script>
+        function bindBodyEvent(event, handle) {
+            window.addEventListener(event, handle);
+        }
+
+        function getElementById(id) {
+            return document.getElementById(id);
+        }
+
+        function getElementsByClass(cssClass) {
+            return document.getElementsByClassName(cssClass);
+        }
+
+        function getElementClassList(id) {
+            return getElementById(id).classList;
+        }
+
+        function changeHash(container) {
+            var con = document.getElementsByClassName("container");
+            for (var i = 0; i < con.length; i++) {
+                con[i].classList.remove("current");
+            }
+            location.hash = container.id;
+            container.classList.add("current");
+            getElementsByClass("container").item(clickIndex).style.border = " 10px solid #cece";
+        }
+        touch();
+        function touch() {
+            var Xstart = 0;
+            var Ystart = 0;
+            var Xend = 0;
+            var Yend = 0;
+            bindBodyEvent("touchstart", function (event) {
+                Xstart = event.changedTouches[0].screenX;
+                Ystart = event.changedTouches[0].screenY;
+            }, false);
+            bindBodyEvent("touchend", function (event) {
+                Xend = event.changedTouches[0].screenX;
+                Yend = event.changedTouches[0].screenY;
+                handleTouch(Xstart, Xend, Ystart, Yend);
+            }, false);
+        }
+
+        function handleTouch(Xstart, Xend, Ystart, Yend) {
+            var dx = Xend - Xstart;
+            var dy = Yend - Ystart;
+            var xy = Math.abs(dx / dy);
+            var addition = 0;
+            if (xy > 3.7321) {
+                if (Xend < Xstart - 10) {
+                    addition = 1;
+                }
+                if (Xend > Xstart + 10) {
+                    addition = -1;
+                }
+            }
+            changeScreen(addition);
+        }
+        function changeScreen(addition) {
+            var con = getElementsByClass("container");
+            var clickIndex = -1;
+            for (var i = 1; i <con.length; i++) {
+                if (con.item(i).classList.contains("current")) {
+                    clickIndex = i + addition;
+                    break;
+                }
+            }
+            clickIndex--;
+            if (clickIndex > -1 && clickIndex < con.length)
+                getElementsByClass("container").item(clickIndex).click();
+        }
+    </script>
+</body>
+</html>-->
+<!--<html>
+<head>
+    <title>Search box filter</title>
+    <style>
+
+        .hide {
+            display: none;
+        }
+        #main {
+            position: relative;
+            margin-top: 50px;
+            margin-left: 500px;
+            height: 50vh;
+            width: 50vw;
+            border:10px solid #000000;
+            background-color:antiquewhite;
+        }
+        #search-box {
+            position: absolute;
+            width: 500px;
+            height: 50px;
+            left:0;
+            top:0;
+        }
+        #dropdown {
+            position: absolute;
+            width: 500px;
+            left: 0;
+            top: 35px;
+        }
+        #dropdown ul{
+            position:absolute;
+            padding-left:0;
+        }
+            #dropdown li {
+                list-style: none;
+                background-color: #edeceb;
+                width: 500px;
+                height: 50px;
+                font-size: 30px;
+            }
+        @media only screen and (orientation : landscape) and (max-width:800px) and (max-height:550px) {
+            #main {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <input  oninput="search()" id="search-box">
+        <div id="dropdown" class="hide">
+            <ul>
+                <li>A0008</li>
+                <li>A0009</li>
+                <li>A0010</li>
+                <li>A0011</li>
+                <li>A0012</li>
+                <li>A0013</li>
+                <li>A0014</li>
+                <li>A0019</li>
+                <li>A0022</li>
+                <li>A0023</li>
+                <li>B0114</li>
+                <li>B0128</li>
+                <li>B0129</li>
+                <li>B0134</li>
+                <li>B0136</li>
+                <li>B0137</li>
+                <li>B0146</li>
+                <li>B0148</li>
+                <li>B0177</li>
+                <li>B0180</li>
+                <li>CHA41</li>
+                <li>CHA43</li>
+                <li>CHA44</li>
+                <li>CHA45</li>
+                <li>CHA47</li>
+                <li>CHA48</li>
+                <li>CHA49</li>
+                <li>CHA50</li>
+                <li>CHA51</li>
+                <li>CHA52</li>
+                <li>D0611</li>
+                <li>D0614</li>
+                <li>D0615</li>
+                <li>D0621</li>
+                <li>D0622</li>
+                <li>D0626</li>
+                <li>D0633</li>
+                <li>D0654</li>
+                <li>D0672</li>
+                <li>D0678</li>
+                <li>EKL01</li>
+                <li>EKT03</li>
+                <li>EKT04</li>
+                <li>EKT06</li>
+                <li>ELA001</li>
+                <li>ELA02</li>
+                <li>ELA03</li>
+                <li>ELA05</li>
+                <li>ELA06</li>
+                <li>ELA08</li>
+                <li>FRE06</li>
+                <li>FRE07</li>
+                <li>FRE11</li>
+                <li>FRE12</li>
+                <li>FRE14</li>
+                <li>FRE15</li>
+                <li>FRE17</li>
+                <li>FRE18</li>
+                <li>FRI02</li>
+                <li>FRI03</li>
+                <li>GAM07</li>
+                <li>GAM25</li>
+                <li>GAN06</li>
+                <li>GAN07</li>
+                <li>GAN08</li>
+                <li>GAN09</li>
+                <li>GAN11</li>
+                <li>GAN12</li>
+                <li>GAN13</li>
+                <li>GAN14</li>
+                <li>HPT01</li>
+                <li>HQS01</li>
+                <li>HRA01</li>
+                <li>HRC01</li>
+                <li>HRC03</li>
+                <li>HRH001</li>
+                <li>HRI02</li>
+                <li>HRI03</li>
+                <li>HRI04</li>
+                <li>HRM001</li>
+                <li>IAM01</li>
+                <li>IAR02</li>
+                <li>IAU01</li>
+                <li>IBA02</li>
+                <li>IBE02</li>
+                <li>IBJ01</li>
+                <li>IBM002</li>
+                <li>IBM003</li>
+                <li>IBM04</li>
+                <li>IBM06</li>
+                <li>JAV02</li>
+                <li>JAV03</li>
+                <li>JAV04</li>
+                <li>JAV05</li>
+                <li>JAW01</li>
+                <li>JAW02</li>
+                <li>JAY003</li>
+                <li>JAY05</li>
+                <li>JAY06</li>
+                <li>JAY09</li>
+                <li>K2128</li>
+                <li>K2245</li>
+                <li>K2A09</li>
+                <li>K2A12</li>
+                <li>K2A19</li>
+                <li>K2A24</li>
+                <li>K2B04</li>
+                <li>K2B23</li>
+                <li>K2C07</li>
+                <li>K2C13</li>
+                <li>LAN16</li>
+                <li>LAN17</li>
+                <li>LAN18</li>
+                <li>LAN22</li>
+                <li>LAN23</li>
+                <li>LAN24</li>
+                <li>LAN25</li>
+                <li>LAN26</li>
+                <li>LAN28</li>
+                <li>LAN50</li>
+                <li>MAG12</li>
+                <li>MAG13</li>
+                <li>MAG17</li>
+                <li>MAG18</li>
+                <li>MAG19</li>
+                <li>MAG20</li>
+                <li>MAG22</li>
+                <li>MAG25</li>
+                <li>MAG26</li>
+                <li>MAG27</li>
+                <li>N2359</li>
+                <li>N2362</li>
+                <li>N2377</li>
+                <li>N2382</li>
+                <li>N2389</li>
+                <li>N2397</li>
+                <li>N2398</li>
+                <li>N2573</li>
+                <li>N2P13</li>
+                <li>N2P19</li>
+                <li>OVI01</li>
+                <li>OWI01</li>
+                <li>OXF01</li>
+                <li>OXY04</li>
+                <li>OXY05</li>
+                <li>OXY07</li>
+                <li>OXY09</li>
+                <li>OYA02</li>
+                <li>OZE01</li>
+                <li>OZO06</li>
+                <li>P0001</li>
+                <li>P0002</li>
+                <li>P0007</li>
+                <li>P0008</li>
+                <li>P0009</li>
+                <li>P0011</li>
+                <li>P0013</li>
+                <li>P0015</li>
+                <li>P0016</li>
+                <li>P0019</li>
+                <li>QUI16</li>
+                <li>QUI17</li>
+                <li>QUI18</li>
+                <li>QUI21</li>
+                <li>QUL01</li>
+                <li>QUL02</li>
+                <li>QUR01</li>
+                <li>QUT01</li>
+                <li>QVE01</li>
+                <li>QXG01</li>
+                <li>R0002</li>
+                <li>R0005</li>
+                <li>R0008</li>
+                <li>R0011</li>
+                <li>R0014</li>
+                <li>R4E01</li>
+                <li>RA003</li>
+                <li>RAA01</li>
+                <li>RAA03</li>
+                <li>RAB01</li>
+                <li>SYN46</li>
+                <li>SYS004</li>
+                <li>SYS12</li>
+                <li>SYS13</li>
+                <li>SYS15</li>
+                <li>SYS16</li>
+                <li>SYS17</li>
+                <li>SYS18</li>
+                <li>SYS22</li>
+                <li>SYS24</li>
+                <li>T2S01</li>
+                <li>T7E01</li>
+                <li>TAA02</li>
+                <li>TAB02</li>
+                <li>TAC04</li>
+                <li>TAC05</li>
+                <li>TAC06</li>
+                <li>TAC07</li>
+                <li>TAD01</li>
+                <li>TAD02</li>
+                <li>UTS01</li>
+                <li>UTS02</li>
+                <li>UTS10</li>
+                <li>UTT03</li>
+                <li>UTT04</li>
+                <li>UTT12</li>
+                <li>UVA02</li>
+                <li>UVE01</li>
+                <li>UVG01</li>
+                <li>UXD01</li>
+                <li>V1E01</li>
+                <li>V2I01</li>
+                <li>V2R01</li>
+                <li>V2S03</li>
+                <li>V2V01</li>
+                <li>V3S001</li>
+                <li>V4A01</li>
+                <li>V4E01</li>
+                <li>V4I01</li>
+                <li>V4S01</li>
+                <li>WSA01</li>
+                <li>WSR01</li>
+                <li>WTE01</li>
+                <li>WTV01</li>
+                <li>WUD01</li>
+                <li>WUR01</li>
+                <li>WWC02</li>
+                <li>WYB01</li>
+                <li>WYS01</li>
+                <li>WYZ02</li>
+                <li>X0011</li>
+                <li>X0023</li>
+                <li>X0026</li>
+                <li>X0035</li>
+                <li>X0036</li>
+                <li>X0042</li>
+                <li>X0049</li>
+                <li>X0054</li>
+                <li>X0055</li>
+                <li>X0056</li>
+                <li>YUK002</li>
+                <li>YUK03</li>
+                <li>YUK05</li>
+                <li>YUM01</li>
+                <li>YUN01</li>
+                <li>YUV01</li>
+                <li>YUV05</li>
+                <li>YUV06</li>
+                <li>YVR01</li>
+                <li>YYH01</li>
+                <li>Z0018</li>
+                <li>Z0019</li>
+                <li>Z0031</li>
+                <li>Z0044</li>
+                <li>Z0047</li>
+                <li>Z0053</li>
+                <li>Z0058</li>
+                <li>Z0061</li>
+                <li>Z0071</li>
+                <li>Z0083</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+    <script>
+        function search() {
+            document.getElementById("dropdown").classList.remove("hide");
+            let liText = document.getElementById("dropdown").getElementsByTagName('li');
+            let searchValue = document.getElementById("search-box").value;
+            var regex = new RegExp("\\b" + searchValue);
+            if (searchValue == "")
+                document.getElementById("dropdown").classList.add("hide");
+            for (var i = 0; i < liText.length; i++) {
+                if (regex.test(liText[i].innerText.toLowerCase())) {
+                    liText[i].classList.remove("hide");
+                } else {
+                    liText[i].classList.add("hide");
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>-->
